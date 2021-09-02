@@ -1,13 +1,13 @@
 <apex:page controller="MyTeamOrdersController">
-    <apex:pageBlock Title = "Results by Owner">
-        <apex:pageBlockTable value="{!getOrders}" var="o">
-            <apex:column value="{!o['ownerName']}"/>
-            <apex:column value="{!o['totalAmount']} €"/>
+    <h1>Total of My Team's Orders</h1>
+    <apex:pageBlock title="Total Order Sum">
+        <apex:pageBlockTable value="{!aggregateResultList}" var="aggResultObj">
+            <apex:column value="{!aggResultObj['ordCount']}">
+                <apex:facet name="header">Total Sum</apex:facet>
+            </apex:column>
+            <apex:column value="{!aggResultObj['ordAmount']}">
+                <apex:facet name="header">Commercial</apex:facet>
+            </apex:column>
         </apex:pageBlockTable>
-    </apex:pageBlock>
-    <apex:pageBlock Title = "Team Results">
-        <apex:pageBlockSection>   
-            <apex:outputText value="{!sumOrders} €" />
-        </apex:pageBlockSection>
     </apex:pageBlock>
 </apex:page>
