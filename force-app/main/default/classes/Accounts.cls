@@ -8,7 +8,7 @@ public with sharing class Accounts {
         } else {
 
             // Get orders related to theses accounts
-             list<Order> accOrders =  OrdersSelector.selectOrdersFromAccounts(accountsToUpdate);
+             list<Order> accOrders =  OrderSelector.selectOrdersFromAccounts(accountsToUpdate);
             
             // Update accounts CA adding totalAmount of related orders
             for(Account acc : accountsToUpdate) {
