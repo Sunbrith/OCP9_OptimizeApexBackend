@@ -1,4 +1,4 @@
-public with sharing class OrdersSelector {
+public with sharing class OrderSelector {
 
     // Search for orders from associated accounts
     public static List<Order> selectOrdersFromAccounts(List<Account> accList) {
