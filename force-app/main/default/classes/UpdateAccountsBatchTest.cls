@@ -1,8 +1,6 @@
 @isTest(SeeAllData=false) private class UpdateAccountsBatchTest {
     
     @isTest static void testUpdateTenAccounts() {
-        // Desactivate trigger
-        ApprovalTriggerHandler.setDoNotRunTrigger();
        // Create a list of 10 accounts 
         List<Account> accs = new List<Account>();
         for(Integer i=0; i<10;i++) {
@@ -45,8 +43,6 @@
     }
  
    @isTest static void testChangeProductsUnitPrice() { 
-        // Desactivate trigger
-        ApprovalTriggerHandler.setDoNotRunTrigger();
         // Create an account
         Account acc = new Account(Name = 'Test Account', Chiffre_d_affaire__c = 10000);
         insert acc;
