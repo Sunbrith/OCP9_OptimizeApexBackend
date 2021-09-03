@@ -1,4 +1,4 @@
-@isTest(SeeAllData=false) private class TestUpdateAccounts {
+@isTest(SeeAllData=false) private class UpdateAccountsTest {
     
     @isTest static void testUpdateTenAccounts() {
         // Desactivate trigger
