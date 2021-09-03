@@ -10,21 +10,21 @@
         insert accs;
     }
     
-    @isTest static void updateMoreThanTwoHundredOrdersAccountCA() {
+    @isTest static void updateTwoHundredFiftyOrdersAccountCA() {
         // Get an account
         Account acc = [ SELECT Chiffre_d_affaire__c FROM Account WHERE Name='Test Account 1' LIMIT 1 ];
-        // Create 210 ordered orders on account
-        List<Order> accOrders = TestDataFactory.createOrdersOnAccount(210, acc.Id);
+        // Create 250 orders with status ordered on account
+        List<Order> accOrders = TestDataFactory.createOrdersOnAccount(250, acc.Id);
         // Create a list of accounts and add acc
         List<Account> accs = new List<Account> {acc};
         // Test accounts method
         Test.startTest();
         Accounts.updateAccountCA(accs);
         Test.stopTest();
-        // Check actual acc CA
+        // Check actual account CA
         Account accCA  = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id = :acc.Id];
         // Acc CA should be equal to 10000 + 210 * 100
-        System.assertEquals(31000, accCa.chiffre_d_affaire__c );
+        System.assertEquals(35000, accCa.chiffre_d_affaire__c );
     }
 
     @isTest static void updateThreeAccountsCA() {

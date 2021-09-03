@@ -1,18 +1,21 @@
-public without sharing class MyTeamOrdersController {
-    // Get and display the list of salers and their orders amount
-     public AggregateResult[] getOrders{
-        get{
-           return [SELECT Owner.Name ownerName, SUM(TotalAmount) totalAmount FROM Order 
-                    WHERE Status = 'Ordered' GROUP BY Owner.Name];
-        }    
-    	set;
-    }
-       // Get and display the sum of all orders
-       public decimal sumOrders{
-        get{
-			AggregateResult groupedResults = [SELECT SUM(TotalAmount) total FROM Order];
-			return (decimal)groupedResults.get('total');
-        }
-        set;
-    }
+/**
+* This class returns a summary of the data from the Order Object
+* It is ordered by the owner i.e. the sales rep.   
+*/
+
+
+public with sharing class MyTeamOrdersController {
+
+ public List<AggregateResult> aggregateResultList {get; set;}
+
+ public MyTeamOrdersController() {
+
+     aggregateResultList = new List <aggregateResult>();
+     aggregateResultList = [SELECT COUNT(id) ordCount, 
+                                   SUM(TotalAmount) ordAmount, 
+                                   owner.Name ordName 
+                                   FROM Order 
+                                   WHERE Status = 'Activated' 
+                                   GROUP BY owner.Name];
+ }
 }
