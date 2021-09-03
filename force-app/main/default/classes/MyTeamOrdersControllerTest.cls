@@ -1,23 +1,32 @@
 @isTest private class MyTeamOrdersControllerTest {
     
-    @isTest static void controllerTest() {
-		// Create an account
-        Account acc = new Account(name = 'Test', chiffre_d_affaire__c = 10000);
-        insert acc;
-        // Create an order associated to this account
-        // Amount is equal to 100
-        List<Order> newOrders = TestDataFactory.createOrdersOnAccount(1, acc.Id);
-        Order newOrder = newOrders.get(0);
-        
-        Test.StartTest(); 
-        // Instanciate the visualforce page and define parameters
-  		PageReference pageRef = Page.MyTeamOrders; 
-  		pageRef.getParameters().put('id', String.valueOf(newOrder.Id));
-  		Test.setCurrentPage(pageRef);
-        // Instanciate the VF custom controller
-        MyTeamOrdersController controller = new MyTeamOrdersController();
- 		Test.StopTest();
-        System.assertEquals(1, controller.getOrders.size());
-        System.assertEquals(100, controller.sumOrders);
+    @TestSetup
+    private static void testData(){
+        User user1 = TestDataFactory.createUser('User1');
+        System.runAs(user1){
+            TestDataFactory.createOrdersForOneAccount(3);
+        }
+
+        User user2 = TestDataFactory.createUser('User2');
+        System.runAs(user2){
+            TestDataFactory.createOrdersForOneAccount(2);
+        }
+
+        User user3 = TestDataFactory.createUser('User3');
+        System.runAs(user3){
+            TestDataFactory.createOrdersForOneAccount(4);
+        }
     }
+    
+    @isTest
+private static void TestAggregateResultList(){
+
+    Test.startTest();
+    MyTeamOrdersController controller = new MyTeamOrdersController();
+    List<AggregateResult> totalOrdersByOwner = controller.aggregateResultList;
+    Test.stopTest();
+
+//Assert that that the list isn't empty
+System.assert(totalOrdersByOwner.size()>0); 
+}
 }
