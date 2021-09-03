@@ -1,4 +1,4 @@
-global class UpdateAccounts implements Database.Batchable<sObject>{
+global class UpdateAccountsBatch implements Database.Batchable<sObject>{
     
     global Database.QueryLocator start(Database.BatchableContext info){ 
 

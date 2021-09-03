@@ -3,7 +3,6 @@
 * It is ordered by the owner i.e. the sales rep.   
 */
 
-
 public with sharing class MyTeamOrdersController {
 
  public List<AggregateResult> aggregateResultList {get; set;}

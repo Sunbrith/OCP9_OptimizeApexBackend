@@ -1,4 +1,4 @@
-@isTest(SeeAllData=false) private class UpdateAccountsTest {
+@isTest(SeeAllData=false) private class UpdateAccountsBatchTest {
     
     @isTest static void testUpdateTenAccounts() {
         // Desactivate trigger
@@ -33,7 +33,7 @@
         update orders;
         // Launch the batch
         Test.startTest();
-        UpdateAccounts upAccs = new UpdateAccounts();
+        UpdateAccountsBatch upAccs = new UpdateAccountsBatch();
         Id batchId = Database.executeBatch(upAccs);
         Test.stopTest();
         // Check accounts CA
@@ -60,7 +60,7 @@
        update products;
         // Launch the batch
         Test.startTest();
-        UpdateAccounts upAccs = new UpdateAccounts();
+        UpdateAccountsBatch upAccs = new UpdateAccountsBatch();
         Id batchId = Database.executeBatch(upAccs);
         Test.stopTest();
         // Check new acc CA
