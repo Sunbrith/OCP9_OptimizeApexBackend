@@ -28,10 +28,10 @@ public class TestDataFactory {
         Insert product;
         
         PricebookEntry pbe = new PricebookEntry(
-            Pricebook2Id = Test.getStandardPricebookId(),
-            Product2Id = product.Id,
-            UnitPrice = 1020,
-            IsActive = true
+            Pricebook2Id   = Test.getStandardPricebookId(),
+            Product2Id     = product.Id,
+            UnitPrice      = 1020,
+            IsActive       = true
         );
         Insert pbe;
         Return pbe;
@@ -39,10 +39,10 @@ public class TestDataFactory {
     
     // Create an order with draft status, associated to an account
     public static Order createOrder(Id accountId, boolean doInsert) {
-        Order newOrder = new Order(
-            AccountId = accountId,
-            Pricebook2Id=Test.getStandardPricebookId(),
-            status = 'draft',
+        Order newOrder    = new Order(
+            AccountId     = accountId,
+            Pricebook2Id  = Test.getStandardPricebookId(),
+            status        = 'draft',
             effectiveDate = Date.today()
         );
         if(doInsert) {
