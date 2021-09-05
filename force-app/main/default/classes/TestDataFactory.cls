@@ -1,5 +1,5 @@
 @isTest
-public class TestDataFactory {
+public abstract class TestDataFactory {
 
     //creates a new user
     public static User createUser(String name){

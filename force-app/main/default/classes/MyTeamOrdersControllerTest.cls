@@ -4,17 +4,17 @@
     private static void testData(){
         User user1 = TestDataFactory.createUser('User1');
         System.runAs(user1){
-            TestDataFactory.createOrder(3);
+            TestDataFactory.createMultipleProductsOrders(3);
         }
 
         User user2 = TestDataFactory.createUser('User2');
         System.runAs(user2){
-            TestDataFactory.createOrder(2);
+            TestDataFactory.createMultipleProductsOrders(2);
         }
 
         User user3 = TestDataFactory.createUser('User3');
         System.runAs(user3){
-            TestDataFactory.createOrder(4);
+            TestDataFactory.createMultipleProductsOrders(4);
         }
     }
 
