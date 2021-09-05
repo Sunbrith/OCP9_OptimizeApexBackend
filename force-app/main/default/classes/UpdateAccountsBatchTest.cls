@@ -47,7 +47,7 @@
         Account acc = new Account(Name = 'Test Account', Chiffre_d_affaire__c = 10000);
         insert acc;
         // Create an ordered order on account.    
-        List<Order> newOrders = TestDataFactory.createOrdersOnAccount(3, acc.Id); 
+        List<Order> newOrders = TestDataFactory.createOrdersOnAccount(2, acc.Id); 
         List<OrderItem> products = [SELECT UnitPrice FROM OrderItem WHERE OrderId IN :newOrders ];
         // Change unit price of product: each order TotalAmount is equal to 200
        for(OrderItem product : products) { 
@@ -61,7 +61,7 @@
         Test.stopTest();
         // Check new acc CA
         Account accCA = [SELECT Chiffre_d_affaire__c FROM Account WHERE Id = :acc.Id];
-        // Assertions account CA should be equal to 10000 + 200*3 = 10600
+        // Assertions account CA should be equal to 10000 + 200*2 = 10400
         System.assertEquals(10600, accCA.Chiffre_d_affaire__c);
     }
 }

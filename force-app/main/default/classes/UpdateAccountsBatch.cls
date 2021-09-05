@@ -6,8 +6,7 @@ global class UpdateAccountsBatch implements Database.Batchable<sObject>{
         String query = AccountSelector.queryAccountsWithOrderedOrders();
         return Database.getQueryLocator(query);
     }
-    // Update the Chiffre_d_affaire field of all of these accounts, 
-    // according to their ordered orders totalAmounts 
+    // Update the Chiffre_d_affaire field of all of these accounts
     global void execute(Database.BatchableContext info, List<Account> scope){      
        Accounts.updateAccountCA(scope);
     }    
