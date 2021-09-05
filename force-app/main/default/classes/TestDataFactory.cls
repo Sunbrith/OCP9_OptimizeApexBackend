@@ -1,4 +1,4 @@
-@isTest
+
 public abstract class TestDataFactory {
 
     //creates a new user
