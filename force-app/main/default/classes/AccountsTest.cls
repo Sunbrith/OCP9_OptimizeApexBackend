@@ -23,7 +23,7 @@
         Test.stopTest();
         // Check actual account CA
         Account accCA  = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Id = :acc.Id];
-        // Acc CA should be equal to 10000 + 210 * 100
+        // Acc CA should be equal to 10000 + 250 * 100
         System.assertEquals(35000, accCa.chiffre_d_affaire__c );
     }
 
