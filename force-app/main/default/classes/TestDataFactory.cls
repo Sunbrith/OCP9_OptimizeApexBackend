@@ -4,8 +4,6 @@ public class TestDataFactory {
 
 public static Account createOrdersForOneAccount(Integer num){
 
-           
-
     // create an  account
 
     Account acc = new Account (Name = 'name', Description = 'test', Chiffre_d_affaire__c = 0);
@@ -18,21 +16,15 @@ public static Account createOrdersForOneAccount(Integer num){
     update cont;
 
     //create a pricebook
-
-   Id priceBookId = Test.getStandardPricebookId();
-
-  
+    Id priceBookId = Test.getStandardPricebookId();
 
     //product creation 
-
     Product2 prod = new Product2(name = 'prod', IsActive=true);
     insert prod;
 
-      // create a pricebook entry
-
-
-      PricebookEntry pbe = new PricebookEntry(Pricebook2Id = priceBookId, Product2Id = prod.id, UseStandardPrice = false, UnitPrice= 100.00, IsActive= true);
-      insert pbe;
+    // create a pricebook entry
+    PricebookEntry pbe = new PricebookEntry(Pricebook2Id = priceBookId, Product2Id = prod.id, UseStandardPrice = false, UnitPrice= 100.00, IsActive= true);
+    insert pbe;
 
      // create orders
      List<Order>  orderList = new List<Order>();
@@ -42,11 +34,8 @@ public static Account createOrdersForOneAccount(Integer num){
         orderList.add(ord);    
     }
     insert orderList;
-  
-
 
     // create order item
-
     List<OrderItem> orderItems = new List<OrderItem>();
 
     for(integer j = 0 ; j<num; j++){
@@ -56,23 +45,14 @@ public static Account createOrdersForOneAccount(Integer num){
     }
     insert orderItems;
 
-
     for(order o : orderList){
         o.Status = 'Activated';
     }
-    
 
     update orderList;
-
     update orderItems;
-
     return acc;
-
 }
-
-// add a method to create an account : best practise SF
-
-
 
     //creates a new user
     public static User createUser(String name){
