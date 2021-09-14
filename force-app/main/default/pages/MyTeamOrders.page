@@ -3,9 +3,12 @@
     <apex:pageBlock title="Total Order Sum">
         <apex:pageBlockTable value="{!aggregateResultList}" var="aggResultObj">
             <apex:column value="{!aggResultObj['ordCount']}">
-                <apex:facet name="header">Total Sum</apex:facet>
+                <apex:facet name="header">Total Orders</apex:facet>
             </apex:column>
             <apex:column value="{!aggResultObj['ordAmount']}">
+                <apex:facet name="header">Order Amount</apex:facet>
+            </apex:column>
+            <apex:column value="{!aggResultObj['ordName']}">
                 <apex:facet name="header">Commercial</apex:facet>
             </apex:column>
         </apex:pageBlockTable>
