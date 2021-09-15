@@ -1,4 +1,4 @@
-@isTest private class MyTeamOrdersControllerTest {
+@isTest private class c {
     
     @TestSetup
 

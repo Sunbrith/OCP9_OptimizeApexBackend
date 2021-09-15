@@ -29,7 +29,5 @@ public with sharing class SchedulerTest {
         List<AsyncApexJob> jobsApexBatch = [select Id, ApexClassID, ApexClass.Name, Status, JobType from AsyncApexJob where JobType = 'BatchApex'];
         System.assertEquals(1, jobsApexBatch.size(), 'expecting one apex batch job');
         System.assertEquals('UpdateAccountsBatch', jobsApexBatch[0].ApexClass.Name, 'expecting specific batch job');
-    
-    
     }
 }
